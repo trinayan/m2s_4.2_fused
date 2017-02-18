@@ -1,0 +1,45 @@
+arch/southern-islands/emu/machine.c:	/* Compute fused multiply-add */
+driver/opencl/southern-islands/ABI.cc:	if (driver->fused)
+driver/opencl/southern-islands/ABI.cc:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/southern-islands/ABI.cc:	if (driver->fused)
+driver/opencl/southern-islands/ABI.cc:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/southern-islands/ABI.cc:	if (driver->fused)
+driver/opencl/southern-islands/ABI.cc:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/southern-islands/ABI.cc:	if (driver->fused)
+driver/opencl/southern-islands/ABI.cc:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/southern-islands/ABI.cc:	if (driver->fused)
+driver/opencl/southern-islands/ABI.cc:	if (driver->fused)
+driver/opencl/southern-islands/ABI.cc: * OpenCL ABI call #19 - si_ndrange_set_fused
+driver/opencl/southern-islands/ABI.cc: * @param unsigned int fused
+driver/opencl/southern-islands/ABI.cc: *	Whether to enable or disable the fused device
+driver/opencl/southern-islands/ABI.cc:static int opencl_abi_si_ndrange_set_fused_impl(X86Context *ctx)
+driver/opencl/southern-islands/ABI.cc:	driver->fused = regs->ecx;
+driver/opencl/southern-islands/ABI.cc:	/* With a fused device, the GPU MMU will be initialized by
+driver/opencl/southern-islands/ABI.cc:	if (driver->fused)
+driver/opencl/southern-islands/ABI.cc:		opencl_debug("\tfused\n");
+driver/opencl/southern-islands/ABI.cc:		opencl_debug("\tnot fused\n");
+driver/opencl/opencl.h:	int fused : 1;
+driver/opencl/opencl.c:	if (driver->fused)
+driver/opencl/opencl.c:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/opencl.c:	if (driver->fused)
+driver/opencl/opencl.c:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/opencl.c:	if (driver->fused)
+driver/opencl/opencl.c:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/opencl.c:	if (driver->fused)
+driver/opencl/opencl.c:		fatal("%s: GPU is set as a fused device, so the x86 "
+driver/opencl/opencl.c:	if (driver->fused)
+driver/opencl/opencl.c:	/* When a fused device is present, the driver needs to set up
+driver/opencl/opencl.c:	if (driver->fused)
+driver/opencl/opencl.c: * OpenCL ABI call #19 - si_ndrange_set_fused
+driver/opencl/opencl.c: * @param unsigned int fused
+driver/opencl/opencl.c: *	Whether to enable or disable the fused device
+driver/opencl/opencl.c:static int opencl_abi_si_ndrange_set_fused_impl(X86Context *ctx)
+driver/opencl/opencl.c:	driver->fused = regs->ecx;
+driver/opencl/opencl.c:	/* With a fused device, the GPU MMU will be initialized by
+driver/opencl/opencl.c:	if (driver->fused)
+driver/opencl/opencl.c:		opencl_debug("\tfused\n");
+driver/opencl/opencl.c:		opencl_debug("\tnot fused\n");
+driver/opencl/opencl.dat:OPENCL_ABI_CALL(si_ndrange_set_fused, 19)
+driver/common/SI.h:	// CPU/GPU fused device
+driver/common/SI.h:	bool fused;
+mem-system/config.c:	/* FIXME We don't know if device is fused until runtime, so we can't

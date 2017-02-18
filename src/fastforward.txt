@@ -1,0 +1,39 @@
+arch/x86/timing/cpu.h:	long long num_fast_forward_inst;  /* Fast-forwarded x86 instructions */
+arch/x86/timing/cpu.h:void X86CpuFastForward(X86Cpu *self);
+arch/x86/timing/cpu.h:void X86CpuFastForwardOpenCL(X86Cpu *self);
+arch/x86/timing/cpu.h:extern int x86_opencl_fast_forward;
+arch/x86/timing/cpu.c:	"  FastForward = <num_inst> (Default = 0)\n"
+arch/x86/timing/cpu.c:long long x86_cpu_fast_forward_count;
+arch/x86/timing/cpu.c:int x86_opencl_fast_forward;
+arch/x86/timing/cpu.c:static char *x86_cpu_err_fast_forward =
+arch/x86/timing/cpu.c:	"\tfor fast-forward (functional) execution has caused all contexts to end\n"
+arch/x86/timing/cpu.c:	"\tof fast-forward instructions and retry.\n";
+arch/x86/timing/cpu.c:	x86_cpu_fast_forward_count = config_read_llint(config, section, "FastForward", 0);
+arch/x86/timing/cpu.c:	fprintf(f, "FastForwardInstructions = %lld\n", cpu->num_fast_forward_inst);
+arch/x86/timing/cpu.c:	fprintf(f, "FastForward = %lld\n", x86_cpu_fast_forward_count);
+arch/x86/timing/cpu.c:	/* Fast-forward simulation */
+arch/x86/timing/cpu.c:	if (x86_cpu_fast_forward_count && asEmu(emu)->instructions
+arch/x86/timing/cpu.c:			< x86_cpu_fast_forward_count)
+arch/x86/timing/cpu.c:		X86CpuFastForward(cpu);
+arch/x86/timing/cpu.c:	/* Optionally fast-forward if OpenCL nd-range is not being executed */
+arch/x86/timing/cpu.c:	if (x86_opencl_fast_forward && !cpu->ndranges_running && !esim_finish)
+arch/x86/timing/cpu.c:		X86CpuFastForwardOpenCL(cpu);
+arch/x86/timing/cpu.c:			x86_emu_max_inst - x86_cpu_fast_forward_count)
+arch/x86/timing/cpu.c:/* Run fast-forward simulation */
+arch/x86/timing/cpu.c:void X86CpuFastForward(X86Cpu *self)
+arch/x86/timing/cpu.c:	/* Fast-forward simulation. Run 'x86_cpu_fast_forward' iterations of the x86
+arch/x86/timing/cpu.c:	while (asEmu(emu)->instructions < x86_cpu_fast_forward_count && !esim_finish)
+arch/x86/timing/cpu.c:	/* Record number of instructions in fast-forward execution. */
+arch/x86/timing/cpu.c:	self->num_fast_forward_inst = asEmu(emu)->instructions;
+arch/x86/timing/cpu.c:	/* Output warning if simulation finished during fast-forward execution. */
+arch/x86/timing/cpu.c:		warning("x86 fast-forwarding finished simulation.\n%s",
+arch/x86/timing/cpu.c:				x86_cpu_err_fast_forward);
+arch/x86/timing/cpu.c:void X86CpuFastForwardOpenCL(X86Cpu *self)
+arch/x86/timing/cpu.c:	X86ContextDebug("#%lld Entering fast forward\n", asTiming(self)->cycle);
+arch/x86/timing/cpu.c:	/* Fast forward */
+arch/x86/timing/cpu.c:	X86ContextDebug("#%lld Exiting fast forward\n", asTiming(self)->cycle);
+m2s.c:		"  --x86-opencl-fast-forward\n"
+m2s.c:		"      Fast-forward (emulate) x86 instructions whenever an OpenCL kernel is not \n"
+m2s.c:		/* Fast-forward when not executing an nd-range */
+m2s.c:		if (!strcmp(argv[argi], "--x86-opencl-fast-forward"))
+m2s.c:			x86_opencl_fast_forward = 1;
